@@ -1,18 +1,28 @@
+import "@/styles/index.scss";
+
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Root } from "@/routes/root.tsx";
+import { ErrorPage } from "@/routes/error-page.tsx";
+import { HomePage } from "@/routes/home/home-page.tsx";
 
-import "./index.scss";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+    ],
+  },
+]);
 
-const rootElement = document.getElementById("root");
-if (rootElement == null) {
-  throw Error("Root not found!");
-}
-
-const root = createRoot(rootElement);
-
-root.render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 );
