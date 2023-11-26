@@ -1,5 +1,10 @@
+import { Main } from "@/components/main.tsx";
+import { Content } from "@/components/content.tsx";
+
 export const HomePage = () => {
-  return <main className="text-5xl">
-    home!
-  </main>
-}
+  return <Main>
+    <Content>
+      hey
+    </Content>
+  </Main>;
+};
