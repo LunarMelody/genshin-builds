@@ -7,7 +7,7 @@ interface MainProps {
 }
 
 export const Main: FC<MainProps> = ({ children, className }) => {
-  const classes = cn(className, "grid-area-[main]");
+  const classes = cn(className, "grid-area-[main] flex flex-col");
 
   return <main className={classes}>{children}</main>;
 };
